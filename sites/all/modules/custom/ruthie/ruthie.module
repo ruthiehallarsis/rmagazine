@@ -1,0 +1,91 @@
+<?php
+
+/** 
+ * Implements hook_block_info().
+ */
+function ruthie_block_info() {
+  // This example comes from node.module.
+  $blocks['block_ruthie'] = array(
+    'info' => t('Ruthie Block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/** 
+ * Implements hook_block_view().
+ */
+function ruthie_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'block_ruthie':
+      $block['subject'] = t('Ruthie Block');
+      $block['content'] = t('lorem ipsum dolor sit amet');
+    break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_menu
+ */
+function ruthie_menu() {
+  $items['abc/def'] = array(
+    'title' => 'Ruthie',
+    'description' => 'This is a link for ruthie',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('sample_page_form'),
+    'type' => MENU_NORMAL_ITEM,
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+function sample_page_form($form, &$form_state) {
+  
+  $form['form_name_field'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('Name'), 
+    '#default_value' => variable_get('form_name_field', 'text here'), 
+    '#size' => 60, 
+    '#maxlength' => 128, 
+    '#required' => TRUE,
+  );
+
+  $form['tests_taken_field'] = array(
+    '#type' => 'checkboxes',
+    '#options' => drupal_map_assoc(array(t('SAT TEST'), t('ACT'))),
+    '#title' => t('What standardized tests did you take?'),
+   );
+
+  $form['sex_field'] = array(
+    '#type' => 'select',
+    '#title' => t('Are you a girl or a boy?'),
+    '#options' => drupal_map_assoc(array(t('Girl'), t('Boy'))),
+    '#default_value' => variable_get('sex_field', 'text here'), 
+    '#default_value' => 'Girl',
+   );
+
+  $form['settings_field'] = array(
+    '#type' => 'radios',
+    '#title' => t('Poll status'),
+    '#options' => drupal_map_assoc(array(t('Closed'), t('Open'))),
+    '#default_value' => variable_get('settings_field', 'choose'), 
+  );
+
+  $form = system_settings_form($form);
+  return $form;
+
+}
+
+function ruthie_init() {
+  $test = 'Ruthie Awesome';
+  drupal_add_js(array(
+    'ruthie' => array(
+      'test' => $test,
+    )), setting 
+  );
+}

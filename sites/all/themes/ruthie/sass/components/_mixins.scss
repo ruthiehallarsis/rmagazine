@@ -1,0 +1,16 @@
+@function calculateRem($size) {
+  $remSize: $size / 16;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: unquote($size + 'px');
+  font-size: calculateRem($size);
+}
+
+@mixin display-inlineblock() {
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+}

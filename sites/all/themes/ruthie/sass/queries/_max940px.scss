@@ -1,0 +1,30 @@
+@media only screen and (max-width: 950px)  {
+
+
+#block-block-2, #block-block-3 {
+  display: block;
+  margin-top: 0px;
+}
+
+#block-system-main-menu, #block-menu-block-2{
+	display: none;
+}
+
+#block-menu-block-1, #block-menu-block-3{
+  display: none;
+}
+
+.region.region-sidebar-second{
+	display: none;
+}
+
+#main {
+	margin-right: 10px;
+}
+
+
+#ca-menu-container {
+  display:block;
+}
+
+}

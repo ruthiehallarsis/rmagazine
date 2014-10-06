@@ -1,0 +1,6 @@
+name = Ruthie Module
+description = Allow ruthie Module
+core = 7.x
+package = Ruthie
+version = 1.0
+
